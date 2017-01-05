@@ -2,10 +2,6 @@ defmodule HelloElixirTest do
   use ExUnit.Case
   doctest HelloElixir
 
-  test "the truth" do
-    assert 1 + 1 == 2
-  end
-
   test "can multiply" do
     assert HelloElixir.multiply(2, 3) == 6
   end
@@ -26,4 +22,5 @@ defmodule HelloElixirTest do
     # The factorial of 4 == 4 * 3 * 2 * 1 == 24
     assert HelloElixir.factorial(21) == 51090942171709440000
   end
+  
 end
