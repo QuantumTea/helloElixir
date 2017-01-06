@@ -5,12 +5,16 @@ defmodule MartianData do
 		HTTPotion.get "marsweather.ingenology.com/v1/latest/"
 	end
 
-	def getMartianTemperature do	
-
+	def getDataFromFile do
+		File.read!("mars_weather.json")
 	end
 
-	def getMartianSolLength do
-		
+	def getTemperature do
+		# IO.inspect (Poison.Parser.parse getDataFromNasa)
+	end
+
+	def getSolLength do
+				
 	end
 
 end
