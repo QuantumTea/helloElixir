@@ -3,11 +3,13 @@ defmodule MartianDataTest do
   doctest MartianData
 
   test "can get a success response from endpoint" do
-  	assert HTTPotion.Response.success?(MartianData.getDataFromNasa)
+    response = MartianData.getDataFromNasa
+  	assert HTTPotion.Response.success?(response)
   end
 
   test "can read string from a file" do
-    assert String.length(MartianData.getDataFromFile) != 0
+    response = MartianData.getDataFromFile
+    assert String.length(response) != 0
   end
 
   test "can get current temperature on Mars" do
