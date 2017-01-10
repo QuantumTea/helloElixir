@@ -12,12 +12,12 @@ defmodule MartianDataTest do
     assert String.length(response) != 0
   end
 
-  test "can get latest low temperature on Mars" do
+  test "can get the low temperature on Mars from a file" do
     val = MartianData.getTemperatureLow
     assert val == -81
   end
 
-  test "can get latest high temperature on Mars" do
+  test "can get the high temperature on Mars from a file" do
     val = MartianData.getTemperatureHigh
     assert val == -6
   end
