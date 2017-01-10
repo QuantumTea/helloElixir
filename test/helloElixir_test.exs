@@ -15,7 +15,7 @@ defmodule HelloElixirTest do
   end
 
   test "can concatenate strings" do
-    assert HelloElixir.concat("hello ", "world!") == "hello world!"
+    assert HelloElixir.concat("hello", " world!") == "hello world!"
   end
 
   test "can calculate a factorial" do

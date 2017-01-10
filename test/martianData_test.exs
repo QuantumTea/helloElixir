@@ -12,13 +12,14 @@ defmodule MartianDataTest do
     assert String.length(response) != 0
   end
 
-  test "can get current temperature on Mars" do
-    val = MartianData.getTemperature
+  test "can get latest low temperature on Mars" do
+    val = MartianData.getTemperatureLow
+    assert val == -81
   end
 
-  test "can get current Sol length on Mars" do
-    # a Martian day is called a Sol
-    val = MartianData.getSolLength
+  test "can get latest high temperature on Mars" do
+    val = MartianData.getTemperatureHigh
+    assert val == -6
   end
 
 end

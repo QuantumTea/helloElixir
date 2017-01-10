@@ -6,15 +6,22 @@ defmodule MartianData do
 	end
 
 	def getDataFromFile do
-		File.read!("mars_weather.json")
+		File.read!("mars_weather.json") 
 	end
 
-	def getTemperature do
-		# IO.inspect (Poison.Parser.parse getDataFromNasa)
+	def parseJSON do
+		# Adam Ritzel's code
+		{:ok, contents} = File.read("./mars_weather.json")
+		{:ok, map} = Poison.decode(contents)
+		map["report"]
+	end   
+
+	def getTemperatureHigh do
+		parseJSON["max_temp"]
 	end
 
-	def getSolLength do
-				
+	def getTemperatureLow do
+		parseJSON["min_temp"]
 	end
 
 end
