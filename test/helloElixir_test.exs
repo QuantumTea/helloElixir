@@ -15,7 +15,7 @@ defmodule HelloElixirTest do
   end
 
   test "can concatenate strings" do
-    assert HelloElixir.concat("hello", " world!") == "hello world!"
+    assert HelloElixir.concatenate("hello", " world!") == "hello world!"
   end
 
   test "can calculate a factorial" do
@@ -25,6 +25,7 @@ defmodule HelloElixirTest do
 
   test "can calculate days from today until Christmas" do
     result = HelloElixir.daysFromTodayUntilDate("2017-12-25")
+    IO.puts "\nDays left:" 
     IO.inspect result
     assert result != 0
   end
