@@ -34,7 +34,6 @@ defmodule HelloElixir do
 		sum
 	end
 
-
 	def daysFromTodayUntilDate(dateString) do
 		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(dateString, "{ISOdate}")
 		Timex.diff(endDate, Timex.today, :days)
