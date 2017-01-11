@@ -20,7 +20,7 @@ defmodule MartianData do
 
 	def getTemperatureLow do
 		parseJSON["min_temp"]
-	end
+	end 
 
 	def getTemperatureRange do
 		getTemperatureHigh - getTemperatureLow

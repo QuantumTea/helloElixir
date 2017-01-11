@@ -33,4 +33,21 @@ defmodule HelloElixir do
 	defp factorial(val, sum) when val == 1 do
 		sum
 	end
+
+
+	def daysUntilDate(dateString) do
+		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(dateString, "{ISOdate}")
+		Timex.diff(endDate, todaysDate, :days)
+	end
+
+	def daysBetweenDates(date1, date2) do
+		{:ok, startDate} = Timex.Parse.DateTime.Parser.parse(date1, "{ISOdate}")
+		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(date2, "{ISOdate}")
+		Timex.diff(endDate, startDate, :days)
+	end
+
+	def todaysDate do
+		Timex.today
+	end
+
 end

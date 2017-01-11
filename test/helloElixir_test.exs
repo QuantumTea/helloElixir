@@ -22,5 +22,13 @@ defmodule HelloElixirTest do
     # The factorial of 4 == 4 * 3 * 2 * 1 == 24
     assert HelloElixir.factorial(21) == 51090942171709440000
   end
+
+  test "can calculate days from today until Christmas" do
+    IO.inspect HelloElixir.daysUntilDate("2017-12-25")
+  end
+
+  test "can calculate days between two dates" do
+    assert HelloElixir.daysBetweenDates("2017-02-17", "2017-03-03") == 14
+  end
   
 end
