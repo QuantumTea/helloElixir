@@ -25,6 +25,7 @@ defmodule HelloElixirTest do
 
   test "can calculate days from today until Christmas" do
     result = HelloElixir.daysFromTodayUntilDate("2017-12-25")
+    IO.inspect result
     assert result != 0
   end
 

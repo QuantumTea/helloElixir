@@ -34,16 +34,19 @@ defmodule HelloElixir do
 		sum
 	end
 
-
 	def daysFromTodayUntilDate(dateString) do
 		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(dateString, "{ISOdate}")
-		Timex.diff(endDate, Timex.today, :days)
+		daysBetween(Timex.today, endDate)
 	end
 
 	def daysBetweenDates(date1, date2) do
 		{:ok, startDate} = Timex.Parse.DateTime.Parser.parse(date1, "{ISOdate}")
 		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(date2, "{ISOdate}")
-		Timex.diff(endDate, startDate, :days)
+		daysBetween(startDate, endDate)
+	end
+
+	defp daysBetween(first, second) do
+		Timex.diff(second, first, :days)
 	end
 
 end
