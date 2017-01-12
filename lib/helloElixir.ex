@@ -16,7 +16,7 @@ defmodule HelloElixir do
 		:math.pow(val, 1/3)
 	end 
 
-	def concat(valx, valy) do
+	def concatenate(valx, valy) do
 		# strings are binary arrays in Elixir, test with is_binary(val)
 		valx <> valy
 	end

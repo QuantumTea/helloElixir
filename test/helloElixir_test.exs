@@ -23,9 +23,9 @@ defmodule HelloElixirTest do
     assert HelloElixir.factorial(21) == 51090942171709440000
   end
 
-  test "can calculate days from today until Christmas" do
+  test "can calculate days from today until Christmas 2017" do
     result = HelloElixir.daysFromTodayUntilDate("2017-12-25")
-    IO.puts "\nDays left:" 
+    IO.puts "\nDays left till Christmas this year:" 
     IO.inspect result
     assert result != 0
   end
