@@ -32,7 +32,7 @@ defmodule MartianData do
 	end
 
 	def latestHighTemperature do
-		parseJsonFromNasa["max_temp"]
+		 parseJsonFromNasa["max_temp"]
 	end
 
 	def getTemperatureHigh do

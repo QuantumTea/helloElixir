@@ -9,16 +9,16 @@ defmodule MartianDataTest do
   test "can get latest sol data from endpoint" do
     # downloaded file has sol 1572, newer data should be a higher number
     result = MartianData.latestSol
-    IO.puts "\nLatest Martian sol:" 
-    IO.inspect result
+    IO.puts ("\nLatest Martian sol: ")
+    IO.puts(result)
     assert result > 1572
   end
 
   test "can get latest temperature data from endpoint" do
     # not doing an assert here, it could fail randomly
     result = MartianData.latestHighTemperature
-    IO.puts "\nLatest Martian high temperature:" 
-    IO.inspect result
+    IO.puts ("\n Latest Martian high temperature: ")
+    IO.puts(result)
   end
 
   test "can read a string from a file" do
