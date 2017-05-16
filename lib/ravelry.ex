@@ -7,4 +7,9 @@ defmodule Ravelry do
 		%{:username => username, :accessKey => accessKey, :personalKey => personalKey}
 	end
 
+	def getAuthTuple do
+		auth = getAuthDataFromFile
+		%{:username => auth.accessKey, :password => auth.personalKey}
+	end
+
 end

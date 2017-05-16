@@ -10,6 +10,11 @@ defmodule RavelryTest do
     assert auth != nil
   end 
 
+  test "can construct the auth tuple" do
+    #IO.inspect (Ravelry.getAuthTuple)
+    assert Ravelry.getAuthTuple != nil
+  end
+
   test "can log in to Ravelry and get user profile" do
   	
   end
