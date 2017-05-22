@@ -12,10 +12,10 @@ defmodule Ravelry do
 		%{:username => auth.accessKey, :password => auth.personalKey}
 	end
 
-	def buildRequestObject do
-		auth = getAuthDataFromFile
-		# build a JSON object and return it
-		# the object is used with the GET request
+	def buildRequest(endpoint) do
+		user = getAuthDataFromFile.username
+		# GET /people/{username}endpoint
+		"/people/" <> user <> endpoint
 	end
 
 end

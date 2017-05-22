@@ -15,8 +15,16 @@ defmodule RavelryTest do
     assert Ravelry.getAuthTuple != nil
   end
 
-  test "can log in to Ravelry and get user profile" do
-  	
+  test "can display a returned piece of JSON" do
+    needles = Ravelry.buildRequest("/needles/list.json")
+    # assemble basic auth header with un = access key and pwd = personal key
+
+  end
+
+  test "can create URL for Get request, given an endpoint" do
+    endpoint = "/needles/list.json"
+    getRequest = Ravelry.buildRequest(endpoint)
+    assert String.contains?(getRequest, endpoint)
   end
 
  end
