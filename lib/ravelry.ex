@@ -8,14 +8,29 @@ defmodule Ravelry do
 	end
 
 	def getAuthTuple do
+		# assemble basic auth header with username = access key and password = personal key
 		auth = getAuthDataFromFile
-		%{:username => auth.accessKey, :password => auth.personalKey}
+		%{
+			"user:" => auth.accessKey, 
+			"password:" => auth.personalKey
+		}
 	end
 
 	def buildRequest(endpoint) do
 		user = getAuthDataFromFile.username
-		# GET /people/{username}endpoint
+		# HTTPoison.post(url, body, headers, [hackney: [basic_auth: {"username", "password"}]])
 		"/people/" <> user <> endpoint
+	end
+
+	def getRavelryJsonData(endpoint) do
+		# options = "{ Basic " <> getAuthDataFromFile.accessKey <> "," <> getAuthDataFromFile.personalKey <> "}"
+		IO.puts getAuthTuple
+		options = %{
+			"body" => "",
+		 	"basic_auth:" => getAuthTuple
+		}
+		IO.puts options
+		HTTPotion.get(buildRequest(endpoint), options)
 	end
 
 end

@@ -16,9 +16,9 @@ defmodule RavelryTest do
   end
 
   test "can display a returned piece of JSON" do
-    needles = Ravelry.buildRequest("/needles/list.json")
-    # assemble basic auth header with un = access key and pwd = personal key
-
+    response = Ravelry.getRavelryJsonData("/needles/list.json")
+    IO.puts response
+    assert String.contains?("Karbonz", response)
   end
 
   test "can create URL for Get request, given an endpoint" do
