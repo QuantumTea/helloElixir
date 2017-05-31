@@ -18,7 +18,7 @@ defmodule Ravelry do
 
 	def buildRequest(endpoint) do
 		user = getAuthDataFromFile.username
-		# HTTPoison.post(url, body, headers, [hackney: [basic_auth: {"username", "password"}]])
+		# HTTPoison.post(buildRequest(endpoint), body, headers, [hackney: [basic_auth: {getAuthDataFromFile.accessKey, getAuthDataFromFile.personalKey}]])
 		"/people/" <> user <> endpoint
 	end
 
