@@ -14,8 +14,10 @@ defmodule Ravelry do
 
 	def getRavelryJsonData(endpoint) do
 		auth = getAuthDataFromFile
+		url = buildRequest(endpoint)
+		IO.inspect url
 		options = [hackney: [basic_auth: {auth.accessKey, auth.personalKey}]]
-		HTTPotion.get(buildRequest(endpoint), options)
+		HTTPotion.get url, options
 	end
 
 end
