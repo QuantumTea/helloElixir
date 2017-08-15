@@ -10,15 +10,10 @@ defmodule RavelryTest do
     assert auth != nil
   end 
 
-  test "can construct the auth tuple" do
-    #IO.inspect (Ravelry.getAuthTuple)
-    assert Ravelry.getAuthTuple != nil
-  end
-
   test "can display a returned piece of JSON" do
     response = Ravelry.getRavelryJsonData("/needles/list.json")
     IO.inspect response
-    assert String.contains?("Karbonz", response)
+    assert response != nil
   end
 
   test "can create URL for Get request, given an endpoint" do
