@@ -12,11 +12,11 @@ defmodule MartianData do
 	def getDataFromFile do
 		# File.read! returns the contents of the file instead of a tuple, 
 		# http://elixir-lang.org/getting-started/io-and-the-file-system.html
-		File.read!("./mars_weather.json") 
+		File.read!("./res/mars_weather.json") 
 	end
 
 	def parseJsonFromFile do
-		{:ok, contents} = File.read("./mars_weather.json")
+		{:ok, contents} = File.read("./res/mars_weather.json")
 		{:ok, map} = Poison.decode(contents)
 		map["report"]
 	end   

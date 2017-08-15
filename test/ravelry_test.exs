@@ -17,7 +17,7 @@ defmodule RavelryTest do
 
   test "can display a returned piece of JSON" do
     response = Ravelry.getRavelryJsonData("/needles/list.json")
-    IO.puts response
+    IO.inspect response
     assert String.contains?("Karbonz", response)
   end
 

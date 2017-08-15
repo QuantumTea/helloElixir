@@ -30,7 +30,7 @@ defmodule Ravelry do
 			#{"body:" => "",}
 		 	"basic_auth:" => getAuthTuple
 		}
-		IO.puts options
+		IO.inspect options
 		HTTPotion.get(buildRequest(endpoint), options)
 	end
 
