@@ -13,9 +13,9 @@ defmodule Ravelry do
 	end
 
 	def getRavelryJsonData(endpoint) do
+		# needs to be HTTPS, gettig a 403 back
 		auth = getAuthDataFromFile
 		url = buildRequest(endpoint)
-		IO.inspect url
 		options = [hackney: [basic_auth: {auth.accessKey, auth.personalKey}]]
 		HTTPotion.get url, options
 	end
