@@ -29,6 +29,7 @@ defmodule HelloElixir.Mixfile do
   defp deps do
     [{:httpotion, "~> 3.0.2"}, 
     {:poison, "~> 3.0"}, 
-    {:timex, "~> 3.0"}]
+    {:timex, "~> 3.0"},
+    {:basic_auth, "~> 2.1.4"}]
   end
 end
