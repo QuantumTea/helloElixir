@@ -5,7 +5,7 @@ defmodule MartianData do
 	end
 
 	def getDataFromNasa do
-		response = getResponseFromEndpoint
+		response = getResponseFromEndpoint()
 		{:ok, response.body}
 	end
 
@@ -22,29 +22,29 @@ defmodule MartianData do
 	end   
 
 	def parseJsonFromNasa do
-		{:ok, contents} = getDataFromNasa
+		{:ok, contents} = getDataFromNasa()
 		{:ok, map} = Poison.decode(contents)
 		map["report"]
 	end
 
 	def latestSol do
-		parseJsonFromNasa["sol"]
+		parseJsonFromNasa()["sol"]
 	end
 
 	def latestHighTemperature do
-		 parseJsonFromNasa["max_temp"]
+		 parseJsonFromNasa()["max_temp"]
 	end
 
 	def getTemperatureHigh do
-		parseJsonFromFile["max_temp"]
+		parseJsonFromFile()["max_temp"]
 	end
 
 	def getTemperatureLow do
-		parseJsonFromFile["min_temp"]
+		parseJsonFromFile()["min_temp"]
 	end 
 
 	def getTemperatureRange do
-		getTemperatureHigh - getTemperatureLow
+		getTemperatureHigh() - getTemperatureLow()
 	end
 
 end

@@ -15,10 +15,14 @@ defmodule RavelryTest do
     assert String.contains?(getRequest, endpoint)
   end
 
-  test "can display a returned piece of JSON" do
-    {:ok, response} = Ravelry.getRavelryJsonData("/needles/list.json")
-    IO.inspect response.body
-    assert response.body != nil
+  test "can succesfully retrieve a JSON file from endpoint with auth" do
+    response = Ravelry.getRavelryJsonData("/needles/list.json")
+    #IO.inspect(response)
+    assert response != nil
+    assert HTTPotion.Response.success?(response)
+    assert response.status_code == 200
+    assert String.contains?(response.body, "Blackthorn")
+    refute String.contains?(response.body, "Merino")
   end
 
  end

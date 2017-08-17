@@ -8,16 +8,15 @@ defmodule Ravelry do
 	end
 
 	def buildRequest(endpoint) do
-		user = getAuthDataFromFile.username
+		user = getAuthDataFromFile().username
 		"https://api.ravelry.com/people/" <> user <> endpoint
 	end
 
 	def getRavelryJsonData(endpoint) do
-		# needs to be HTTPS, gettig a 403 back
-		auth = getAuthDataFromFile
+		auth = getAuthDataFromFile()
 		url = buildRequest(endpoint)
-		options = [hackney: [basic_auth: {auth.accessKey, auth.personalKey}]]
-		HTTPotion.get url, options
+		options = [basic_auth: {auth.accessKey, auth.personalKey}]
+		HTTPotion.request(:get, url, options)
 	end
 
 end
