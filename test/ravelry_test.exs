@@ -15,7 +15,7 @@ defmodule RavelryTest do
     assert String.contains?(getRequest, endpoint)
   end
 
-  test "can succesfully retrieve a JSON file from endpoint with auth" do
+  test "can successfully retrieve a JSON file from endpoint with authentication" do
     response = Ravelry.getRavelryJsonData("/needles/list.json")
     #IO.inspect(response)
     assert response != nil
