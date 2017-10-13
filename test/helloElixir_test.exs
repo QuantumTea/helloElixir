@@ -33,5 +33,10 @@ defmodule HelloElixirTest do
   test "can calculate days between two dates" do
     assert HelloElixir.daysBetweenDates("2017-02-17", "2017-03-03") == 14
   end
-  
+
+  test "can count number of Friday 13ths in 2017" do
+    # January and October 2017
+    assert (HelloElixir.numberOfFridayThirteenths(2017) == 2)
+  end
+
 end
