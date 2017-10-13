@@ -35,8 +35,13 @@ defmodule HelloElixirTest do
   end
 
   test "can count number of Friday 13ths in 2017" do
-    # January and October 2017
+    # January 2017 and October 2017
     assert (HelloElixir.numberOfFridayThirteenths(2017) == 2)
   end
+
+  test "can count number of Friday 13ths in 2000" do
+    # October 2000
+    assert (HelloElixir.numberOfFridayThirteenths(2000) == 1)
+  end  
 
 end
