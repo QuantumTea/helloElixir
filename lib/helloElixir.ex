@@ -1,8 +1,6 @@
 defmodule HelloElixir do
 
 	def multiply(valx, valy) do
-		# use IO.inspect to output values to the terminal
-		# IO.inspect(valx)
 		valx * valy
 	end
 
@@ -50,19 +48,20 @@ defmodule HelloElixir do
 	end
 
 	def numberOfFridayThirteenths(year) do
-		# There are twelve 13ths in the year, count which are on Fridays
-		# Months are a 1-based list, January == 1
+		# There are twelve 13ths in the year, and January == 1
 		testYear = Timex.to_date( {year, 1, 13} )
-		# Check day for each 13th
+		
+		# Check day for each 13th, some kind of recursive function
 		
 		# Returns a five if the 13th is a Friday
 		IO.puts ( testYear |> Elixir.Timex.weekday )
+		
 		# not finished writing code, force test to fail
 		13
 	end
 
 	def numberOfFridayThirteenths() do
-		# If year was not specified, go with current year
+		# If the year was not specified, go with the current year
 		year = Timex.Parse.DateTime.Parser.parse(Timex.today, "{year}")
 		numberOfFridayThirteenths(year)
 	end 
