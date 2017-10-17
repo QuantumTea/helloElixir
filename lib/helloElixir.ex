@@ -49,15 +49,7 @@ defmodule HelloElixir do
 
 	def numberOfFridayThirteenths(year) do
 		# There are twelve 13ths in the year, and January == 1
-		testYear = Timex.to_date( {year, 1, 13} )
-		
-		# Check day for each 13th, some kind of recursive function
-		
-		# Returns a five if the 13th is a Friday
-		IO.puts ( testYear |> Elixir.Timex.weekday )
-		
-		# not finished writing code, force test to fail
-		13
+		thirteenthCheck(year, 1, 0)
 	end
 
 	def numberOfFridayThirteenths() do
@@ -65,5 +57,22 @@ defmodule HelloElixir do
 		year = Timex.Parse.DateTime.Parser.parse(Timex.today, "{year}")
 		numberOfFridayThirteenths(year)
 	end 
+
+	def thirteenthCheck(year, month, thirteenths) when month < 13 do
+		testMonth = Timex.to_date( {year, month, 13} )
+		IO.puts testMonth
+
+		if ( ( testMonth |> Elixir.Timex.weekday ) == 5 ) do
+			thirteenthCheck(year, (month + 1), (thirteenths + 1) )
+		:else 
+			thirteenthCheck(year, (month + 1) , thirteenths)
+		end
+
+		thirteenths
+	end
+
+	def thirteenthCheck(year, month, thirteenths) when month == 13 do
+		thirteenths
+	end
 
 end
