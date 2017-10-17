@@ -34,14 +34,17 @@ defmodule HelloElixirTest do
     assert HelloElixir.daysBetweenDates("2017-02-17", "2017-03-03") == 14
   end
 
-  test "can count number of Friday 13ths in 2017" do
-    # January 2017 and October 2017
-    assert (HelloElixir.numberOfFridayThirteenths() == 2)
+  test "can tell if given month/year has a Friday 13th" do
+    assert HelloElixir.hasFriday13th(12, 2019) == :true
+    assert HelloElixir.hasFriday13th(11, 2019) == :false
+    assert HelloElixir.hasFriday13th(3, 2020) == :true
   end
 
-  test "can count number of Friday 13ths in 2000" do
+  test "can count number of Friday 13ths in a given year" do
+    # January 2017 and October 2017
+    assert (HelloElixir.numberOfFridayThirteenths(2017) == 2)
     # October 2000
     assert (HelloElixir.numberOfFridayThirteenths(2000) == 1)
-  end  
+  end
 
 end
