@@ -57,8 +57,22 @@ defmodule HelloElixir do
 	end
 
 	def numberOfFridayThirteenths(year) do
-		# There are twelve 13ths in the year, and January == 1
-		thirteenthCheck(year, 1, 0)
+		# there HAS to be a better way of doing this
+		results = [ { hasFriday13th(1, year) },
+					{ hasFriday13th(2, year) }, 
+					{ hasFriday13th(3, year) },
+					{ hasFriday13th(4, year) },
+					{ hasFriday13th(5, year) }, 
+					{ hasFriday13th(6, year) },
+					{ hasFriday13th(7, year) },
+					{ hasFriday13th(8, year) }, 
+					{ hasFriday13th(9, year) },
+					{ hasFriday13th(10, year) },
+					{ hasFriday13th(11, year) }, 
+					{ hasFriday13th(12, year) }, ]
+		IO.puts results
+		# count number of trues, return month numbers/names in an array?
+		13
 	end
 
 	def numberOfFridayThirteenths() do
@@ -66,32 +80,4 @@ defmodule HelloElixir do
 		year = Timex.Parse.DateTime.Parser.parse(Timex.today, "{year}")
 		numberOfFridayThirteenths(year)
 	end 
-
-	def thirteenthCheck(year, month, thirteenths) when month < 12 do
-		testMonth = Timex.to_date( {year, month, 13} )
-		IO.puts month
-
-		if ( ( testMonth |> Elixir.Timex.weekday ) == 5 ) do
-			IO.puts "Friday found!"
-			#thirteenthCheck(year, (month + 1), (thirteenths + 1) )
-		:else 
-			#thirteenthCheck(year, (month + 1) , thirteenths)
-			IO.puts "No Friday here"
-		end
-
-		# force it to fail
-		13
-	end
-
-	def thirteenthCheck(year, month, thirteenths) when month == 12 do
-		testMonth = Timex.to_date( {year, month, 13} )
-
-		if ( ( testMonth |> Elixir.Timex.weekday ) == 5 ) do
-			:finalCount = thirteenths + 1
-		end
-
-		IO.puts :finalCount
-		:finalCount
-	end
-
 end
