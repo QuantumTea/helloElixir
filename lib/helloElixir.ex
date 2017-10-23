@@ -59,7 +59,7 @@ defmodule HelloElixir do
 	def numberOfFridayThirteenths(year) do
 		# there HAS to be a better way of doing this
 		# get the month name in the system locale
-		results = [ { Timex.format!( {year, 1, 13}, "{Mfull}"), hasFriday13th(1, year) },
+		months = [ { Timex.format!( {year, 1, 13}, "{Mfull}"), hasFriday13th(1, year) },
 					{ Timex.format!( {year, 2, 13}, "{Mfull}"), hasFriday13th(2, year) }, 
 					{ Timex.format!( {year, 3, 13}, "{Mfull}"), hasFriday13th(3, year) },
 					{ Timex.format!( {year, 4, 13}, "{Mfull}"), hasFriday13th(4, year) },
@@ -71,8 +71,9 @@ defmodule HelloElixir do
 					{ Timex.format!( {year, 10, 13}, "{Mfull}"), hasFriday13th(10, year) },
 					{ Timex.format!( {year, 11, 13}, "{Mfull}"), hasFriday13th(11, year) }, 
 					{ Timex.format!( {year, 12, 13}, "{Mfull}"), hasFriday13th(12, year) }, ]
+		filtered = Enum.filter(months, fn(x) -> elem(x, 1) end)				
 		# pass back the number of trues
-		results
+		Enum.count(filtered)
 	end
 
 	def numberOfFridayThirteenths() do
