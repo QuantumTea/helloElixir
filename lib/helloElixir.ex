@@ -58,21 +58,21 @@ defmodule HelloElixir do
 
 	def numberOfFridayThirteenths(year) do
 		# there HAS to be a better way of doing this
-		results = [ { hasFriday13th(1, year) },
-					{ hasFriday13th(2, year) }, 
-					{ hasFriday13th(3, year) },
-					{ hasFriday13th(4, year) },
-					{ hasFriday13th(5, year) }, 
-					{ hasFriday13th(6, year) },
-					{ hasFriday13th(7, year) },
-					{ hasFriday13th(8, year) }, 
-					{ hasFriday13th(9, year) },
-					{ hasFriday13th(10, year) },
-					{ hasFriday13th(11, year) }, 
-					{ hasFriday13th(12, year) }, ]
-		IO.puts results
-		# count number of trues, return month numbers/names in an array?
-		13
+		# get the month name in the system locale
+		results = [ { Timex.format!( {year, 1, 13}, "{Mfull}"), hasFriday13th(1, year) },
+					{ Timex.format!( {year, 2, 13}, "{Mfull}"), hasFriday13th(2, year) }, 
+					{ Timex.format!( {year, 3, 13}, "{Mfull}"), hasFriday13th(3, year) },
+					{ Timex.format!( {year, 4, 13}, "{Mfull}"), hasFriday13th(4, year) },
+					{ Timex.format!( {year, 5, 13}, "{Mfull}"), hasFriday13th(5, year) }, 
+					{ Timex.format!( {year, 6, 13}, "{Mfull}"), hasFriday13th(6, year) },
+					{ Timex.format!( {year, 7, 13}, "{Mfull}"), hasFriday13th(7, year) },
+					{ Timex.format!( {year, 8, 13}, "{Mfull}"), hasFriday13th(8, year) }, 
+					{ Timex.format!( {year, 9, 13}, "{Mfull}"), hasFriday13th(9, year) },
+					{ Timex.format!( {year, 10, 13}, "{Mfull}"), hasFriday13th(10, year) },
+					{ Timex.format!( {year, 11, 13}, "{Mfull}"), hasFriday13th(11, year) }, 
+					{ Timex.format!( {year, 12, 13}, "{Mfull}"), hasFriday13th(12, year) }, ]
+		# pass back the number of trues
+		results
 	end
 
 	def numberOfFridayThirteenths() do
