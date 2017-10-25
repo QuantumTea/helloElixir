@@ -37,7 +37,6 @@ defmodule HelloElixirTest do
   test "can tell if given month/year has a Friday 13th" do
     assert HelloElixir.hasFriday13th(12, 2019) == :true
     assert HelloElixir.hasFriday13th(11, 2019) == :false
-    assert HelloElixir.hasFriday13th(3, 2020) == :true
   end
 
   test "can count number of Friday 13ths in a given year" do
