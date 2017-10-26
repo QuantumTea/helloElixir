@@ -1,14 +1,10 @@
 defmodule NaNoWriMo do
-
-	# poke the endpoint
-	# save the XML somewhere
-	# strip out the useful parts of the XML
-	# save a JSON file
+	import SweetXml
 
 	def getRegionalXML(regionstring) do
 		url = "https://nanowrimo.org/wordcount_api/wcregion/" <> regionstring
-		{:ok, contents} = HTTPotion.get url
-		parseXML(contents)
+		{:ok, response} = HTTPotion.request(:get, url)
+		parseXML(response.body)
 	end
 
 	def getRegionalXMLFromFile() do
@@ -16,15 +12,10 @@ defmodule NaNoWriMo do
 		parseXML(contents)
 	end	
 
-	def parseXML(contents) do
-		xml = Friendly.find(contents, "donations")
-		donations = Enum.find(xml.elements, fn element -> element.name == "text" end)
-		IO.puts("\tdonations: #{donations}")
-		donations
-	end
-
-	def buildJSONstringForTodaysStats() do
-
+	def parseXML(xml) do
+		result = xml |> xpath(~x"//wcregion/donations/text()") # `sigil_x` for (x)path
+		IO.puts("\n donations: #{result}")
+		result
 	end
 
 end

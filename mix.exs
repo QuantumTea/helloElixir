@@ -14,7 +14,7 @@ defmodule HelloElixir.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpotion, :timex, :friendly]]
+    [applications: [:logger, :httpotion, :timex]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +29,7 @@ defmodule HelloElixir.Mixfile do
   defp deps do
     [{:httpotion, "~> 3.0.2"}, 
     {:poison, "~> 3.0"}, 
-    {:friendly, "~> 1.0.0"},
+    {:sweet_xml, "~> 0.6.5"},
     {:timex, "~> 3.0"}]
   end
 end
