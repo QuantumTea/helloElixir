@@ -72,7 +72,7 @@ defmodule HelloElixir do
 					{ Timex.format!( {year, 11, 13}, "{Mfull}"), hasFriday13th(11, year) }, 
 					{ Timex.format!( {year, 12, 13}, "{Mfull}"), hasFriday13th(12, year) }, ]
 		
-		# extract out all the elements where the second item in the tuple is true
+		# extract out all the elements where the second item in the tuple (index 1) is true
 		filtered = Enum.filter(months, fn(x) -> elem(x, 1) end)	
 
 		# month names
