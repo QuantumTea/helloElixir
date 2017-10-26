@@ -17,9 +17,10 @@ defmodule NaNoWriMo do
 	end	
 
 	def parseXML(contents) do
-		# this is XML, not JSON, stop using Poison
-		{:ok, map} = Poison.decode(contents)
-		map["wcregion"] 
+		xml = Friendly.find(contents, "donations")
+		donations = Enum.find(xml.elements, fn element -> element.name == "text" end)
+		IO.puts("\tdonations: #{donations}")
+		donations
 	end
 
 	def buildJSONstringForTodaysStats() do
