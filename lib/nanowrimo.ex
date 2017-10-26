@@ -17,6 +17,7 @@ defmodule NaNoWriMo do
 	end	
 
 	def parseXML(contents) do
+		# this is XML, not JSON, stop using Poison
 		{:ok, map} = Poison.decode(contents)
 		map["wcregion"] 
 	end
