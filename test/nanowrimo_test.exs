@@ -11,4 +11,10 @@ defmodule NaNoWriMoTest do
     donations = NaNoWriMo.getRegionalXML("usa-missouri-st-louis")
     assert(donations == '1315.0')
   end
+
+  test "Get the regional word count history from file" do
+    history = NaNoWriMo.getRegionalWordcountHistoryFromFile()
+    # 5 entries in the list
+    assert(Kernel.length(history) == 5)
+  end
 end

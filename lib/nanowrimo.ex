@@ -1,5 +1,5 @@
 defmodule NaNoWriMo do
-	import SweetXml
+	import SweetXml # library for XML operations
 
 	def getRegionalXML(regionstring) do
 		url = "https://nanowrimo.org/wordcount_api/wcregion/" <> regionstring
@@ -18,9 +18,9 @@ defmodule NaNoWriMo do
 
 	def parseOutUsefulData(xml) do
 		donations = xml |> xpath(~x"//wcregion/donations/text()") # `sigil_x` for (x)path
-		donors = xml |> xpath(~x"//wcregion/numdonors/text()") # `sigil_x` for (x)path
-		totalWordsWritten = xml |> xpath(~x"//wcregion/region_wordcount/text()") # `sigil_x` for (x)path
-		totalPeople = xml |> xpath(~x"//wcregion/numparticipants/text()") # `sigil_x` for (x)path
+		donors = xml |> xpath(~x"//wcregion/numdonors/text()") 
+		totalWordsWritten = xml |> xpath(~x"//wcregion/region_wordcount/text()") 
+		totalPeople = xml |> xpath(~x"//wcregion/numparticipants/text()") 
 		
 		IO.puts("\n donations: #{donations}")
 		IO.puts(" halos: #{donors}")
@@ -36,8 +36,8 @@ defmodule NaNoWriMo do
 	end
 
 	def parseRegionHistoryFromFile(xml) do
-		# get all the wcentry/wc elements
-		# deliver the totals, you can dump it in the spreadsheet later
+		# get all the wc elements
+		xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
 	end
 
 end
