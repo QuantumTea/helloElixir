@@ -19,4 +19,10 @@ defmodule NaNoWriMoTest do
 
     assert(Enum.count(history) == 5) # using Enum over list
   end
+
+  test "Get regional rank from file" do
+    rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
+    assert(rank == 1)
+  end
+
 end
