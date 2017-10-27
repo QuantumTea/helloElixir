@@ -32,10 +32,16 @@ defmodule NaNoWriMo do
 
 	def getRegionalWordcountHistoryFromFile() do
 		{:ok, contents} = File.read("./res/nanowrimo_region_history.xml")
-		parseRegionHistoryFromFile(contents)
+		parseRegionHistory(contents)
 	end
 
-	def parseRegionHistoryFromFile(xml) do
+	def getRegionalWordcountHistory(regionstring) do
+		url = "http://nanowrimo.org/wordcount_api/wcregionhist/" <> regionstring
+		response = HTTPotion.request(:get, url)
+		parseRegionHistory(response.body)
+	end
+
+	def parseRegionHistory(xml) do
 		# get all the wc elements
 		history = xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
 		Enum.each(history, fn(x) -> IO.puts(x) end)
@@ -47,7 +53,7 @@ defmodule NaNoWriMo do
 
 		#scoreboard = response.body |> xpath(~x"//table/tbody/tr[2]/td[2]/a/text()"l) 
 		# scoreboard = response.body |> xpath(~x"table/tbody/tr", a: [~x"./td/a/text()"] )
-		# line above is failing to find the list of regions
+		# lines above are failing to find the list of regions
 
 		# get the index of the St Louis one
 		# Enum.count(scoreboard)
