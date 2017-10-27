@@ -44,10 +44,8 @@ defmodule NaNoWriMo do
 
 	def getRegionalRank(regionstring) do
 		response = HTTPotion.request(:get, "https://nanowrimo.org/en/word_count_scoreboard")
-		# {:ok, contents} = File.read("./res/nanowrimo_regional_scoreboard.html")
 		scoreboard = response.body |> xpath(~x"//table/tbody/tr[2]/td[2]/a/text()"l) 
 		# line 48 is failing to find the list of regions
-
 
 		# get the index of the St Louis one
 		Enum.count(scoreboard)
