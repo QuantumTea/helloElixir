@@ -17,7 +17,7 @@ defmodule NaNoWriMo do
 	end
 
 	def parseOutUsefulData(xml) do
-		donations = xml |> xpath(~x"//wcregion/donations/text()") # `sigil_x` for (x)path
+		donations = xml |> xpath(~x"//wcregion/donations/text()") 
 		donors = xml |> xpath(~x"//wcregion/numdonors/text()") 
 		totalWordsWritten = xml |> xpath(~x"//wcregion/region_wordcount/text()") 
 		totalPeople = xml |> xpath(~x"//wcregion/numparticipants/text()") 
@@ -37,7 +37,9 @@ defmodule NaNoWriMo do
 
 	def parseRegionHistoryFromFile(xml) do
 		# get all the wc elements
-		xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
+		history = xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
+		Enum.each(history, fn(x) -> IO.puts(x) end)
+		history
 	end
 
 end
