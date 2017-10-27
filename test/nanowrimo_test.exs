@@ -20,7 +20,7 @@ defmodule NaNoWriMoTest do
 
   test "Get regional rank from file" do
     rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
-    assert(rank == 1)
+    assert String.contains?(rank, "USA :: Missouri :: St. Louis")
   end
 
 end
