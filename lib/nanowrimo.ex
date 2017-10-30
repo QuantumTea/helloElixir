@@ -22,11 +22,11 @@ defmodule NaNoWriMo do
 		totalWordsWritten = xml |> xpath(~x"//wcregion/region_wordcount/text()") 
 		totalPeople = xml |> xpath(~x"//wcregion/numparticipants/text()") 
 		
-		IO.puts("\n Region: #{regionstring}")
-		IO.puts(" donations: #{donations}")
-		IO.puts(" halos: #{donors}")
-		IO.puts(" word count: #{totalWordsWritten}")
-		IO.puts(" people: #{totalPeople}")
+		IO.puts("\n NaNoWriMo Region: #{regionstring}")
+		IO.puts(" Donations: #{donations}")
+		IO.puts(" Halos: #{donors}")
+		IO.puts(" Word count: #{totalWordsWritten}")
+		IO.puts(" People: #{totalPeople}")
 
 		donations
 	end

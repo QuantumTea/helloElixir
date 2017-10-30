@@ -7,9 +7,9 @@ defmodule NaNoWriMoTest do
     assert(donations == '1315.0')
   end
 
-  test "Get the current XML from NaNoWriMo" do
+  test "Get the donation amount for region from NaNoWriMo" do
     donations = NaNoWriMo.getRegionalXML("usa-missouri-st-louis")
-    assert(donations == '1335.0')
+    assert(donations >= '1335.0')
   end
 
   test "Get the regional word count history from file" do
@@ -19,6 +19,14 @@ defmodule NaNoWriMoTest do
     # assert(Kernel.length(history) == 5)
   end
 
+  test "Get the regional word count history from NaNoWriMo" do
+    # history = NaNoWriMo.getRegionalWordcountHistory("usa-missouri-st-louis")
+    # dayNumber = Timex.Parse.DateTime.Parser.parse(Timex.today, "{D}")
+    # should be an entry for every day so far in this month
+    # this will only work for November
+    # assert(Enum.count(history) == dayNumber) 
+  end
+  
   test "Get regional rank from file" do
    # rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
    # assert String.contains?(rank, "USA :: Missouri :: St. Louis")
