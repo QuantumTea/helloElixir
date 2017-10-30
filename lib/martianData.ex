@@ -4,7 +4,7 @@ defmodule MartianData do
 		HTTPotion.get "marsweather.ingenology.com/v1/latest/"
 	end
 
-	def getDataFromNasa do
+	defp getDataFromNasa do
 		response = getResponseFromEndpoint()
 		{:ok, response.body}
 	end
