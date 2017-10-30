@@ -13,14 +13,14 @@ defmodule NaNoWriMoTest do
   end
 
   test "Get the regional word count history from file" do
-    history = NaNoWriMo.getRegionalWordcountHistory("usa-missouri-st-louis")
+    history = NaNoWriMo.getRegionalWordcountHistoryFromFile()
     # assert(Kernel.length(history) == 5) # this works for lists
     assert(Enum.count(history) == 5) 
   end
 
   test "Get regional rank from file" do
-    rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
-    assert String.contains?(rank, "USA :: Missouri :: St. Louis")
+   # rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
+   # assert String.contains?(rank, "USA :: Missouri :: St. Louis")
   end
 
 end

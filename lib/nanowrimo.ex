@@ -44,11 +44,12 @@ defmodule NaNoWriMo do
 	def parseRegionHistory(xml) do
 		# get all the wc elements
 		history = xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
+		IO.puts("\n")
 		Enum.each(history, fn(x) -> IO.puts(x) end)
 		history
 	end
 
-	def getRegionalRank(regionstring) do
+	def getRegionalRank() do
 		response = HTTPotion.request(:get, "https://nanowrimo.org/en/word_count_scoreboard")
 
 		#scoreboard = response.body |> xpath(~x"//table/tbody/tr[2]/td[2]/a/text()"l) 
