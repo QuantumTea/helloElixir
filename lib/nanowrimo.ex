@@ -4,7 +4,7 @@ defmodule NaNoWriMo do
 	def getRegionalXML(regionstring) do
 		url = "https://nanowrimo.org/wordcount_api/wcregion/" <> regionstring
 		response = HTTPotion.request(:get, url)
-		parseOutUsefulData(response.body)
+		parseOutUsefulData(response.body, regionstring)
 	end
 
 	def getRegionalXMLFromFile() do
@@ -16,13 +16,14 @@ defmodule NaNoWriMo do
 		xml |> xpath(~x"//wcregion/donations/text()") # `sigil_x` for (x)path
 	end
 
-	def parseOutUsefulData(xml) do
+	def parseOutUsefulData(xml, regionstring) do
 		donations = xml |> xpath(~x"//wcregion/donations/text()") 
 		donors = xml |> xpath(~x"//wcregion/numdonors/text()") 
 		totalWordsWritten = xml |> xpath(~x"//wcregion/region_wordcount/text()") 
 		totalPeople = xml |> xpath(~x"//wcregion/numparticipants/text()") 
 		
-		IO.puts("\n donations: #{donations}")
+		IO.puts("\n Region: #{regionstring}")
+		IO.puts(" donations: #{donations}")
 		IO.puts(" halos: #{donors}")
 		IO.puts(" word count: #{totalWordsWritten}")
 		IO.puts(" people: #{totalPeople}")
@@ -44,6 +45,7 @@ defmodule NaNoWriMo do
 	def parseRegionHistory(xml) do
 		# get all the wc elements
 		history = xml |> xpath(~x"//wordcounts/wcentry/wc/text()"l) # `l` stands for (l)ist
+		# new line to make it easy to paste these into a spreadsheet
 		IO.puts("\n")
 		Enum.each(history, fn(x) -> IO.puts(x) end)
 		history

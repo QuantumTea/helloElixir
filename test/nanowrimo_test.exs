@@ -9,13 +9,14 @@ defmodule NaNoWriMoTest do
 
   test "Get the current XML from NaNoWriMo" do
     donations = NaNoWriMo.getRegionalXML("usa-missouri-st-louis")
-    assert(donations == '1315.0')
+    assert(donations == '1335.0')
   end
 
   test "Get the regional word count history from file" do
     history = NaNoWriMo.getRegionalWordcountHistoryFromFile()
-    # assert(Kernel.length(history) == 5) # this works for lists
     assert(Enum.count(history) == 5) 
+    # alternative to the above statement is
+    # assert(Kernel.length(history) == 5)
   end
 
   test "Get regional rank from file" do

@@ -76,7 +76,9 @@ defmodule HelloElixir do
 		filtered = Enum.filter(months, fn(x) -> elem(x, 1) end)	
 
 		# month names
-		# IO.puts ( Enum.map(filtered, fn(x) -> elem(x, 0) end) )
+		months = ( Enum.map(filtered, fn(x) -> elem(x, 0) end) )
+		IO.puts("\nMonths in #{year} with a Friday 13th")
+		Enum.each(months, fn(x) -> IO.puts(x) end)
 
 		# pass back the number of trues
 		Enum.count(filtered)

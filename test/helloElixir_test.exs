@@ -25,7 +25,7 @@ defmodule HelloElixirTest do
 
   test "can calculate days from today until Christmas 2017" do
     result = HelloElixir.daysFromTodayUntilDate("2017-12-25")
-    IO.puts "\nDays left till Christmas this year:" 
+    IO.puts "\nDays left till Christmas 2017:" 
     IO.puts result
     assert result != 0
   end
@@ -40,10 +40,13 @@ defmodule HelloElixirTest do
   end
 
   test "can count number of Friday 13ths in a given year" do
-    # January 2017 and October 2017
+    # every year has between one and three Friday 13ths
+    # January and October 2017
     assert (HelloElixir.numberOfFridayThirteenths(2017) == 2)
     # October 2000
     assert (HelloElixir.numberOfFridayThirteenths(2000) == 1)
+    # February, March, and November 2015
+    assert (HelloElixir.numberOfFridayThirteenths(2015) == 3)
   end
 
 end
