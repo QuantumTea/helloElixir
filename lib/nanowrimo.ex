@@ -7,8 +7,7 @@ defmodule NaNoWriMo do
 	end
 
 	def getDonationsSoFar(regionstring) do
-		url = "https://nanowrimo.org/wordcount_api/wcregion/" <> regionstring
-		response = HTTPotion.request(:get, url)
+		response = getRegionalXML(regionstring)
 		response.body |> xpath(~x"//wcregion/donations/text()")
 	end
 
@@ -25,12 +24,6 @@ defmodule NaNoWriMo do
 		IO.puts(" Halos: #{donors}")
 		IO.puts(" Word count: #{totalWordsWritten}")
 		IO.puts(" People: #{totalPeople}")
-	end
-
-	def getRegionalWordcountHistory(regionstring) do
-		url = "https://nanowrimo.org/wordcount_api/wcregionhist/" <> regionstring
-		response = HTTPotion.request(:get, url)
-		parseRegionHistory(response.body)
 	end
 
 	def parseRegionHistory(regionstring) do
