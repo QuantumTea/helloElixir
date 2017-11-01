@@ -2,35 +2,29 @@ defmodule NaNoWriMoTest do
   use ExUnit.Case
   doctest NaNoWriMo
 
-  # test "Get the XML from the file" do
-    # donations = NaNoWriMo.getRegionalXMLFromFile()
-    # assert(donations == '1315.0')
-  # end
+  test "Get the regional XML file from NaNoWriMo" do
+    response = NaNoWriMo.getRegionalXML("usa-missouri-st-louis")
+    assert response != nil
+    assert HTTPotion.Response.success?(response)
+    assert response.status_code == 200
+    assert String.contains?(response.body, "USA :: Missouri :: St. Louis")
+  end
 
   test "Get the donation amount for region from NaNoWriMo" do
-    donations = NaNoWriMo.getRegionalXML("usa-missouri-st-louis")
-    assert(donations >= '1335.0')
+    donations = NaNoWriMo.getDonationsSoFar("usa-missouri-st-louis")
+    assert(donations >= '1355.0')
   end
 
-  # test "Get the regional word count history from file" do
-    # history = NaNoWriMo.getRegionalWordcountHistoryFromFile()
-    # assert(Enum.count(history) == 5) 
-    # alternative to the above statement is
-    # assert(Kernel.length(history) == 5)
-  # end
+  test "Get the useful info from the region XML file" do
+    NaNoWriMo.parseUsefulData("usa-missouri-st-louis")
+  end
 
   test "Get the regional word count history from NaNoWriMo" do
-    history = NaNoWriMo.getRegionalWordcountHistory("usa-missouri-st-louis")
-    # dayNumber = Timex.Parse.DateTime.Parser.parse(Timex.today, "{D}")
-    # IO.puts ("Day number: #{dayNumber}")
-    # should be an entry for every day so far in this month
+    history = NaNoWriMo.parseRegionHistory("usa-missouri-st-louis")
+    {:ok, dayNumber} = Timex.format(Timex.today, "{D}")
+    # should be one entry for every day so far in this month
     # this will only work for November
-    assert(Enum.count(history) == 1) 
+    assert(Enum.count(history) == String.to_integer(dayNumber)) 
   end
-  
-  # test "Get regional rank from file" do
-   # rank = NaNoWriMo.getRegionalRank("USA :: Missouri :: St. Louis")
-   # assert String.contains?(rank, "USA :: Missouri :: St. Louis")
-  # end
 
 end
