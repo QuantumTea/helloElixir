@@ -8,11 +8,12 @@ defmodule NaNoWriMoTest do
     assert HTTPotion.Response.success?(response)
     assert response.status_code == 200
     assert String.contains?(response.body, "USA :: Missouri :: St. Louis")
+    refute String.contains?(response.body, "USA :: California :: East Bay")
   end
 
   test "Get the donation amount for region from NaNoWriMo" do
     donations = NaNoWriMo.getDonationsSoFar("usa-missouri-st-louis")
-    assert(donations >= '1355.0')
+    assert(donations >= '1390.0')
   end
 
   test "Get the useful info from the region XML file" do
