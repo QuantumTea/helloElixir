@@ -1,17 +1,22 @@
 defmodule HTCPCP do
 
-	def startServer() do
+	def hello do
+		:world
 	end
 
-	def endServer() do
+	def init(default_options) do
+		IO.puts "Initialising plug"
 	end
+
+  	def call(conn, options) do
+    	IO.puts "Calling plug"
+    	conn |> Plug.Conn.send_resp(418, "I'm a teapot")
+  	end
 
 	def processGetRequest() do
 		# respond to a GET with a proper 418 error
-		startServer()
-		url = "https://localhost:8080/htcpcp/"
+		url = "https://localhost:4000/"
 		response = HTTPotion.request(:get, url)
-		endServer()
 		response
 	end
 

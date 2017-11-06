@@ -2,6 +2,10 @@ defmodule HTCPCPTest do
   use ExUnit.Case
   doctest HTCPCP
 
+  test "greets the world" do
+    assert HTCPCP.hello() == :world
+  end
+
   test "Get a 418 response back from the HTCPCP server" do
   	response = HTCPCP.processGetRequest()  	 
   	
