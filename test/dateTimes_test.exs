@@ -2,12 +2,25 @@ defmodule DateTimesTest do
   use ExUnit.Case
   doctest DateTimes
 
-  test "can calculate days from today until Christmas 2017" do
-    result = DateTimes.daysFromTodayUntilDate("2017-12-25")
-    IO.puts "\nDays left till Christmas 2017:" 
-    IO.puts result
-    assert result != 0
+  test "can get the current year" do
+    result = DateTimes.getYear(Timex.today)
+    assert result == 2018
   end
+
+  test "can calculate days from today until Christmas" do
+    year = DateTimes.getCurrentYear() 
+    # build date for Christmas this year
+    {:ok, christmasThisYear} = Timex.format(Timex.to_date({year, 12, 25}), "{YYYY}-{M}-{D}")
+    result = DateTimes.daysFromTodayUntilDate(christmasThisYear)
+    IO.puts "\nDays left till Christmas this year: #{result}" 
+    assert result > 0
+  end
+
+ test "can calculate days from today until service anniversary" do
+    result = DateTimes.daysFromTodayUntilDate("2018-06-03")
+    IO.puts "\nDays left till five year anniversary: #{result}" 
+    assert result <= 69
+  end  
 
   test "can calculate days between two dates" do
     assert DateTimes.daysBetweenDates("2017-02-17", "2017-03-03") == 14
@@ -20,12 +33,12 @@ defmodule DateTimesTest do
 
   test "can count number of Friday 13ths in a given year" do
     # every year has between one and three Friday 13ths
-    # January and October 2017
-    assert (DateTimes.numberOfFridayThirteenths(2017) == 2)
     # October 2000
     assert (DateTimes.numberOfFridayThirteenths(2000) == 1)
     # February, March, and November 2015
     assert (DateTimes.numberOfFridayThirteenths(2015) == 3)
+    # January and October 2017
+    assert (DateTimes.numberOfFridayThirteenths(2017) == 2)
   end
 
   test "can tell you if a given year is a leap year" do

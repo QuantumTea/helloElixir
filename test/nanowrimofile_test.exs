@@ -1,4 +1,4 @@
-defmodule NaNoWriMoTest do
+defmodule NaNoWriMoFileTest do
   use ExUnit.Case
   doctest NaNoWriMoFile
 
