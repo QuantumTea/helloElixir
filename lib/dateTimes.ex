@@ -15,6 +15,14 @@ defmodule DateTimes do
 		Timex.diff(second, first, :days)
 	end
 
+	def getCurrentYear() do
+		getYear(Timex.today)
+	end
+
+	def getYear(date) do
+		date.year
+	end
+
 	def hasFriday13th(month, year) do
 		result = Timex.to_date( {year, month, 13} ) |> Elixir.Timex.weekday
 
@@ -26,7 +34,6 @@ defmodule DateTimes do
 
 	def numberOfFridayThirteenths(year) do
 		# there HAS to be a better way of doing this
-		# get the month name in the system locale
 		months = [ { Timex.format!( {year, 1, 13}, "{Mfull}"), hasFriday13th(1, year) },
 					{ Timex.format!( {year, 2, 13}, "{Mfull}"), hasFriday13th(2, year) }, 
 					{ Timex.format!( {year, 3, 13}, "{Mfull}"), hasFriday13th(3, year) },
@@ -43,7 +50,7 @@ defmodule DateTimes do
 		# extract out all the elements where the second item in the tuple (index 1) is true
 		filtered = Enum.filter(months, fn(x) -> elem(x, 1) end)	
 
-		# month names
+		# month names from the filtered list
 		months = ( Enum.map(filtered, fn(x) -> elem(x, 0) end) )
 		IO.puts("\nMonths in #{year} with a Friday 13th:")
 		Enum.each(months, fn(x) -> IO.puts(x) end)

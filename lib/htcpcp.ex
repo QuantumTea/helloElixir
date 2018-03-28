@@ -14,9 +14,11 @@ defmodule HTCPCP do
   	end
 
 	def processGetRequest() do
+		# start server
 		# respond to a GET with a proper 418 error
 		url = "https://localhost:4000/"
 		response = HTTPotion.request(:get, url)
+		# stop server
 		response
 	end
 
