@@ -7,7 +7,12 @@ defmodule DateTimesTest do
     assert result == 2018
   end
 
-  test "can calculate days from today until Christmas" do
+  test "can count the Friday thirteenths this year" do
+    thirteenths = DateTimes.numberOfFridayThirteenths( DateTimes.getYear(Timex.today) )
+    IO.puts "\nFriday thirteenths this year: #{thirteenths}"
+  end
+
+  test "can calculate days from today until Christmas this year" do
     year = DateTimes.getCurrentYear() 
     # build date for Christmas this year
     {:ok, christmasThisYear} = Timex.format(Timex.to_date({year, 12, 25}), "{YYYY}-{M}-{D}")
