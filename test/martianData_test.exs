@@ -24,15 +24,15 @@ defmodule MartianDataTest do
   end
 
   test "can get the low temperature on Mars from a file" do
-    assert MartianData.getTemperatureLow == -81
+    assert MartianData.getTemperatureLow == -14
   end
 
   test "can get the high temperature on Mars from a file" do
-    assert MartianData.getTemperatureHigh == -6
+    assert MartianData.getTemperatureHigh == 22
   end
 
   test "can get temperature range on Mars from file" do
-    assert MartianData.getTemperatureRange == 75
+    assert MartianData.getTemperatureRange == 36
   end
 
 end

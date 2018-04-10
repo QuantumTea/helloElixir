@@ -1,7 +1,9 @@
 defmodule MartianData do
 
 	def getResponseFromEndpoint do
-		HTTPotion.get "marsweather.ingenology.com/v1/latest/"
+		# old MAAS endpoint
+		# HTTPotion.get "marsweather.ingenology.com/v1/latest/"
+		HTTPotion.get "api.maas2.jiinxt.com/"
 	end
 
 	defp getDataFromNasa do
@@ -18,13 +20,17 @@ defmodule MartianData do
 	def parseJsonFromFile do
 		{:ok, contents} = File.read("./res/mars_weather.json")
 		{:ok, map} = Poison.decode(contents)
-		map["report"]
+		# this was needed for the old MAAS API json file
+		# map["report"]
+		map
 	end   
 
 	def parseJsonFromNasa do
 		{:ok, contents} = getDataFromNasa()
 		{:ok, map} = Poison.decode(contents)
-		map["report"]
+		# this was needed for the old MAAS API json file
+		# map["report"]
+		map
 	end
 
 	def latestSol do

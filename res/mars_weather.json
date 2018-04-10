@@ -1,20 +1,14 @@
 {
-    "report": {
-        "terrestrial_date": "2017-01-07", 
-        "sol": 1572, 
-        "ls": 294.0, 
-        "min_temp": -81.0, 
-        "min_temp_fahrenheit": -113.8, 
-        "max_temp": -6.0, 
-        "max_temp_fahrenheit": 21.2, 
-        "pressure": 869.0, 
-        "pressure_string": "Higher", 
-        "abs_humidity": null, 
-        "wind_speed": null, 
-        "wind_direction": "--", 
-        "atmo_opacity": "Sunny", 
-        "season": "Month 10", 
-        "sunrise": "2017-01-07T12:29:00Z", 
-        "sunset": "2017-01-08T00:44:00Z"
-    }
+  "status": 200,
+  "sol": 34,
+  "season": "Season 4",
+  "min_temp": -14,
+  "max_temp": 22,
+  "atmo_opacity": "Sunny",
+  "sunset": "14:34",
+  "sunrise": "01:22",
+  "min_gts_temp": -15,
+  "max_gts_temp": 15,
+  "unitOfMeasure": "Celsius",
+  "TZ_Data": "America/Port_of_Spain"
 }
