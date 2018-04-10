@@ -4,6 +4,7 @@ defmodule MartianData do
 		# old MAAS endpoint
 		# HTTPotion.get "marsweather.ingenology.com/v1/latest/"
 		HTTPotion.get "api.maas2.jiinxt.com/"
+		# getting a connection refused here
 	end
 
 	defp getDataFromNasa do
