@@ -14,10 +14,6 @@ defmodule MathematicsTest do
     assert Mathematics.cuberoot(27) == 3
   end
 
-  test "can concatenate strings" do
-    assert Mathematics.concatenate("hello", " world!") == "hello world!"
-  end
-
   test "can calculate a factorial" do
     # The factorial of 4 == 4 * 3 * 2 * 1 == 24
     assert Mathematics.factorial(21) == 51090942171709440000

@@ -14,11 +14,6 @@ defmodule Mathematics do
 		:math.pow(val, 1/3)
 	end 
 
-	def concatenate(valx, valy) do
-		# strings are binary arrays in Elixir, test with is_binary(val)
-		valx <> valy
-	end
-
 	def factorial(val) do
 		factorial val, 1
 	end
