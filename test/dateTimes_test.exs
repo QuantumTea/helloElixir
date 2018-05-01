@@ -7,25 +7,26 @@ defmodule DateTimesTest do
     assert result == 2018
   end
 
-  test "can count the Friday thirteenths this year" do
-    thirteenths = DateTimes.numberOfFridayThirteenths( DateTimes.getYear(Timex.today) )
-    IO.puts "\nFriday thirteenths this year: #{thirteenths}"
+  test "can count the Friday thirteenths in 2018" do
+    thirteenths = DateTimes.numberOfFridayThirteenths(2018)
+    IO.puts "\nFriday thirteenths in 2018: #{thirteenths}"
+    assert thirteenths == 2
   end
 
   test "can calculate days from today until Christmas this year" do
-    year = DateTimes.getCurrentYear() 
+    year = DateTimes.getCurrentYear()
     # build date for Christmas this year
     {:ok, christmasThisYear} = Timex.format(Timex.to_date({year, 12, 25}), "{YYYY}-{M}-{D}")
     result = DateTimes.daysFromTodayUntilDate(christmasThisYear)
-    IO.puts "\nDays left till Christmas this year: #{result}" 
+    IO.puts "\nDays left till Christmas this year: #{result}"
     assert result > 0
   end
 
  test "can calculate days from today until service anniversary" do
     result = DateTimes.daysFromTodayUntilDate("2018-06-03")
-    IO.puts "\nDays left till five year anniversary: #{result}" 
+    IO.puts "\nDays left till five year anniversary: #{result}"
     assert result <= 69
-  end  
+  end
 
   test "can calculate days between two dates" do
     assert DateTimes.daysBetweenDates("2017-02-17", "2017-03-03") == 14
