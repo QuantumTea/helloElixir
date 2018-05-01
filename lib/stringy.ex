@@ -31,9 +31,13 @@ defmodule Stringy do
 	# 		_ -> "plenty of bottles here."
 	# 	end
 	# end
-	
+
 	def countTheEs(phrase) do
-		result = String.split(phrase, "e")
+		countTheLetter("e", phrase)
+	end
+
+	def countTheLetter(letter, phrase) do
+		result = String.split( String.downcase(phrase), String.downcase(letter))
 		Enum.count(result) - 1
 	end
 end

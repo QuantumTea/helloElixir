@@ -21,3 +21,6 @@ erl_crash.dump
 
 # ignore HTML files
 *.html
+
+# ignore linter files
+/.elixir_ls
