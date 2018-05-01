@@ -1,14 +1,14 @@
 {
-  "status": 200,
-  "sol": 34,
-  "season": "Season 4",
-  "min_temp": -14,
-  "max_temp": 22,
-  "atmo_opacity": "Sunny",
-  "sunset": "14:34",
-  "sunrise": "01:22",
-  "min_gts_temp": -15,
-  "max_gts_temp": 15,
-  "unitOfMeasure": "Celsius",
-  "TZ_Data": "America/Port_of_Spain"
+	"status":200,
+	"sol":2036,
+	"season":"Month 6",
+	"min_temp":-72,
+	"max_temp":-5,
+	"atmo_opacity":"Sunny",
+	"sunset":"17:20",
+	"sunrise":"05:24",
+	"min_gts_temp":-81,
+	"max_gts_temp":14,
+	"unitOfMeasure":"Celsius",
+	"TZ_Data":"America/Port_of_Spain"
 }

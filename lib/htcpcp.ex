@@ -8,10 +8,10 @@ defmodule HTCPCP do
 		IO.puts "Initialising plug"
 	end
 
-  	def call(conn, options) do
-    	IO.puts "Calling plug"
-    	conn |> Plug.Conn.send_resp(418, "I'm a teapot")
-  	end
+	def call(conn, options) do
+		IO.puts "Calling plug"
+		conn |> Plug.Conn.send_resp(418, "I'm a teapot")
+	end
 
 	def processGetRequest() do
 		# start server

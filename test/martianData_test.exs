@@ -7,15 +7,15 @@ defmodule MartianDataTest do
   end
 
   test "can get latest sol data from endpoint" do
-    # downloaded file has sol 1572, newer data should be a higher number
-    result = MartianData.latestSol
+    # downloaded file has sol 34, newer data should be a higher number
+    result = MartianData.getCurrentSolFromEndpoint
     IO.puts ("\nLatest Martian sol: #{result}")
-    assert result > 1572
+    assert result >= 2036
   end
 
   test "can get latest temperature data from endpoint" do
     # not doing an assert here, it could fail randomly
-    result = MartianData.latestHighTemperature
+    result = MartianData.getTemperatureHighFromEndpoint
     IO.puts ("\nLatest Martian high temperature in Celsius: #{result}")
   end
 
@@ -24,15 +24,15 @@ defmodule MartianDataTest do
   end
 
   test "can get the low temperature on Mars from a file" do
-    assert MartianData.getTemperatureLow == -14
+    assert MartianData.getTemperatureLow == -72
   end
 
   test "can get the high temperature on Mars from a file" do
-    assert MartianData.getTemperatureHigh == 22
+    assert MartianData.getTemperatureHigh == -5
   end
 
   test "can get temperature range on Mars from file" do
-    assert MartianData.getTemperatureRange == 36
+    assert MartianData.getTemperatureRange == 67
   end
 
 end

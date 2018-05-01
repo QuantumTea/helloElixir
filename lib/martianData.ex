@@ -1,10 +1,10 @@
 defmodule MartianData do
 
 	def getResponseFromEndpoint do
-		# old MAAS endpoint
+		# MAAS endpoint went dark
 		# HTTPotion.get "marsweather.ingenology.com/v1/latest/"
-		HTTPotion.get "api.maas2.jiinxt.com/"
-		# getting a connection refused here
+		# new endpoint is HTTPS, not HTTP
+		HTTPotion.get "https://api.maas2.jiinxt.com/"
 	end
 
 	defp getDataFromNasa do
@@ -13,33 +13,31 @@ defmodule MartianData do
 	end
 
 	def getDataFromFile do
-		# File.read! returns the contents of the file instead of a tuple, 
+		# File.read! returns the contents of the file instead of a tuple,
 		# http://elixir-lang.org/getting-started/io-and-the-file-system.html
-		File.read!("./res/mars_weather.json") 
+		File.read!("./res/mars_weather.json")
 	end
 
 	def parseJsonFromFile do
 		{:ok, contents} = File.read("./res/mars_weather.json")
 		{:ok, map} = Poison.decode(contents)
-		# this was needed for the old MAAS API json file
+		# MAAS API json file
 		# map["report"]
 		map
-	end   
+	end
 
 	def parseJsonFromNasa do
 		{:ok, contents} = getDataFromNasa()
 		{:ok, map} = Poison.decode(contents)
-		# this was needed for the old MAAS API json file
-		# map["report"]
 		map
 	end
 
-	def latestSol do
+	def getCurrentSolFromEndpoint do
 		parseJsonFromNasa()["sol"]
 	end
 
-	def latestHighTemperature do
-		 parseJsonFromNasa()["max_temp"]
+	def getTemperatureHighFromEndpoint do
+		parseJsonFromNasa()["max_temp"]
 	end
 
 	def getTemperatureHigh do
@@ -48,7 +46,7 @@ defmodule MartianData do
 
 	def getTemperatureLow do
 		parseJsonFromFile()["min_temp"]
-	end 
+	end
 
 	def getTemperatureRange do
 		getTemperatureHigh() - getTemperatureLow()
