@@ -40,16 +40,16 @@ defmodule MartianData do
 		parseJsonFromNasa()["max_temp"]
 	end
 
-	def getTemperatureHigh do
+	def getTemperatureHighFromFile do
 		parseJsonFromFile()["max_temp"]
 	end
 
-	def getTemperatureLow do
+	def getTemperatureLowFromFile do
 		parseJsonFromFile()["min_temp"]
 	end
 
 	def getTemperatureRangeFromFile do
-		getTemperatureHigh() - getTemperatureLow()
+		getTemperatureHighFromFile() - getTemperatureLowFromFile()
 	end
 
 end
