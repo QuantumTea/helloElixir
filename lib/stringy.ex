@@ -37,7 +37,7 @@ defmodule Stringy do
 	end
 
 	def countTheLetter(letter, phrase) do
-		result = String.split( String.downcase(phrase), String.downcase(letter))
+		result = String.split( String.downcase(phrase), String.downcase(letter) )
 		Enum.count(result) - 1
 	end
 end

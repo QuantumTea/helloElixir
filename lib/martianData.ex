@@ -1,9 +1,9 @@
 defmodule MartianData do
 
 	def getResponseFromEndpoint do
-		# MAAS endpoint went dark
+		# MAAS endpoint went dark, was using
 		# HTTPotion.get "marsweather.ingenology.com/v1/latest/"
-		# new endpoint is HTTPS, not HTTP
+		# new endpoint is HTTPS, not HTTP, have to specify that
 		HTTPotion.get "https://api.maas2.jiinxt.com/"
 	end
 
