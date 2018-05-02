@@ -7,7 +7,7 @@ defmodule MartianDataTest do
   end
 
   test "can get latest sol data from endpoint" do
-    # downloaded file has sol 34, newer data should be a higher number
+    # downloaded file has sol 2036, newer data should be a higher number
     result = MartianData.getCurrentSolFromEndpoint
     IO.puts ("\nLatest Martian sol: #{result}")
     assert result >= 2036
@@ -31,8 +31,8 @@ defmodule MartianDataTest do
     assert MartianData.getTemperatureHigh == -5
   end
 
-  test "can get temperature range on Mars from file" do
-    assert MartianData.getTemperatureRange == 67
+  test "can get temperature range on Mars from a file" do
+    assert MartianData.getTemperatureRangeFromFile == 67
   end
 
 end

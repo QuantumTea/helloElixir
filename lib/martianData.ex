@@ -48,7 +48,7 @@ defmodule MartianData do
 		parseJsonFromFile()["min_temp"]
 	end
 
-	def getTemperatureRange do
+	def getTemperatureRangeFromFile do
 		getTemperatureHigh() - getTemperatureLow()
 	end
 
