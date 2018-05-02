@@ -14,9 +14,9 @@ defmodule MartianDataTest do
   end
 
   test "can get latest temperature data from endpoint" do
-    # not doing an assert here, it could fail randomly
     result = MartianData.getTemperatureHighFromEndpoint
     IO.puts ("\nLatest Martian high temperature in Celsius: #{result}")
+    assert(result, "No temperature found from endpoint")
   end
 
   test "can read a string from a file" do
