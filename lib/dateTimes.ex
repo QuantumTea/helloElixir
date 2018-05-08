@@ -23,6 +23,10 @@ defmodule DateTimes do
 		date.year
 	end
 
+	def isLeapYear(test_year) do
+		Timex.is_leap?(test_year)
+	end
+
 	def hasFriday13th(month, year) do
 		result = Timex.to_date( {year, month, 13} ) |> Elixir.Timex.weekday
 
@@ -30,6 +34,13 @@ defmodule DateTimes do
 			result == 5 -> :true
 			result != 5 -> :false
 		end
+	end
+
+	def numberOfFridayThirteenths() do
+		# If the year was not specified, go with the current year
+		now = Timex.to_date(Timex.now())
+		{:ok, year} = Timex.Parse.DateTime.Parser.parse(now, "{year}")
+		numberOfFridayThirteenths( String.to_integer(year) )
 	end
 
 	def numberOfFridayThirteenths(year) do
@@ -62,14 +73,4 @@ defmodule DateTimes do
 		Enum.count(filtered)
 	end
 
-	def numberOfFridayThirteenths() do
-		# If the year was not specified, go with the current year
-		now = Timex.to_date(Timex.now())
-		{:ok, year} = Timex.Parse.DateTime.Parser.parse(now, "{year}")
-		numberOfFridayThirteenths( String.to_integer(year) )
-	end
-
-	def isLeapYear(test_year) do
-		Timex.is_leap?(test_year)
-	end
 end
