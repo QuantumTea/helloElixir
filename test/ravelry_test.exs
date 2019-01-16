@@ -7,7 +7,7 @@ defmodule RavelryTest do
     assert auth.username != nil
     assert auth.accessKey != nil
     assert auth.personalKey != nil
-  end 
+  end
 
   test "can create URL for Get request, given an endpoint" do
     endpoint = "/needles/list.json"
@@ -18,7 +18,7 @@ defmodule RavelryTest do
   test "can successfully retrieve a JSON file from endpoint with authentication" do
     response = Ravelry.getRavelryJsonData("/needles/list.json")
     #IO.inspect(response)
-    assert response != nil
+    refute response = nil
     assert HTTPotion.Response.success?(response)
     assert response.status_code == 200
     assert String.contains?(response.body, "Blackthorn")

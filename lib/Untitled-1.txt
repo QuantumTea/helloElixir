@@ -1,0 +1,96 @@
+ test "can calculate days from today until service anniversary" do
+    result = TimeUnitCalculator.daysFromTodayUntilDate("2018-06-03")
+    IO.puts "\nDays left till five year anniversary: #{result}"
+    assert result <= 69
+  end
+
+  test "can calculate days between today and my black belt test" do
+    days = TimeUnitCalculator.getDaysBetweenDates( Timex.to_date(Timex.now()) , "2016-05-13")
+    IO.puts "\nDays since black belt test: #{days}"
+    assert days > 365
+  end
+
+  test "can calculate months between today and my black belt test" do
+    months = TimeUnitCalculator.getMonthsBetweenDates( Timex.to_date(Timex.now()) , "2016-05-13")
+    IO.puts "\nMonths since black belt test: #{months}"
+    assert months > 23
+  end
+
+  test "can calculate years between today and my black belt test" do
+    years = TimeUnitCalculator.getYearsBetweenDates( Timex.to_date(Timex.now()) , "2016-05-13")
+    IO.puts "\nYears since black belt test: #{years}"
+    assert years >= 1
+  end
+
+  test "can calculate days between two dates" do
+    assert TimeUnitCalculator.getDaysBetweenDates("2017-02-17", "2017-03-03") == 14
+  end
+
+  test "can calculate months between two dates" do
+    assert TimeUnitCalculator.getDaysBetweenDates("2017-02-17", "2017-03-03") == 14
+  end
+
+  test "can calculate years between two dates" do
+    assert TimeUnitCalculator.getDaysBetweenDates("2017-02-17", "2017-03-03") == 14
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+defmodule TimeUnitCalculator do
+
+	def getTodaysDate() do
+		today = Timex.to_date(Timex.now())
+		{:ok, todaysDate} = Timex.Parse.DateTime.Parser.parse(today, "{ISOdate}")
+		todaysDate
+	end
+
+	def getCurrentYear() do
+		getYear(Timex.today)
+	end
+
+	def getYear(date) do
+		date.year
+	end
+
+	def daysFromTodayUntilDate(dateString) do
+		startDate = getTodaysDate()
+		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(dateString, "{ISOdate}")
+		getTimeUnitBetweenDates(startDate, endDate, :days)
+	end
+
+	def getTimeUnitBetweenDates(date1, date2, :unit) do
+		{:ok, startDate} = Timex.Parse.DateTime.Parser.parse(date1, "{ISOdate}")
+		{:ok, endDate} = Timex.Parse.DateTime.Parser.parse(date2, "{ISOdate}")
+		timeUnitBetweenDates(startDate, endDate, :unit)
+	end
+
+	def getDaysBetweenDates(startDate, endDate) do
+		timeUnitBetweenDates(startDate, endDate, :days)
+	end
+
+	def getMonthsBetweenDates(startDate, endDate) do
+		getTimeUnitBetweenDates(startDate, endDate, :months)
+	end
+
+	def getYearsBetweenDates(startDate, endDate) do
+		getTimeUnitBetweenDates(startDate, endDate, :years)
+	end
+
+	defp timeUnitBetweenDates(startDate, endDate, timeUnit) do
+		Timex.diff(endDate, startDate, timeUnit)
+	end
+
+end
