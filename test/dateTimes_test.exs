@@ -4,7 +4,7 @@ defmodule DateTimesTest do
 
   test "can get the current year" do
     result = DateTimes.getYear(Timex.today)
-    assert result == 2018
+    assert result == 2019
   end
 
   test "can count the Friday thirteenths in 2018" do

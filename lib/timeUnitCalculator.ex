@@ -1,21 +1,26 @@
 defmodule TimeUnitCalculator do
 
 	def daysFromTodayUntilDate(dateString) do
-		{:ok, endDate} = convertToDateFormat(dateString)
-		{:ok, startDate} = convertToDateFormat( Date.to_string(Timex.today()) )
-		calculateDaysBetween(endDate, startDate)
+		endDate = convertToDateFormat(dateString)
+		startDate = convertToDateFormat( Date.to_string(Timex.today()) )
+		getDaysBetweenDates(startDate, endDate)
 	end
 
-	def getDaysBetweenDates(date1, date2) do
-		calculateDaysBetween(date1, date2)
+	def getDaysBetweenDates(startDate, endDate) do
+		Timex.diff(endDate, startDate, :days)
 	end
 
-	defp calculateDaysBetween(startDate, endDate) do
-		Timex.diff(startDate, endDate, :days)
+	def getMonthsBetweenDates(startDate, endDate) do
+		Timex.diff(endDate, startDate, :months)
+	end
+
+	def getYearsBetweenDates(startDate, endDate) do
+		Timex.diff(endDate, startDate, :years)
 	end
 
 	def convertToDateFormat(testDate) do
-		Timex.Parse.DateTime.Parser.parse(testDate, "{ISOdate}")
+		{:ok, result} = Timex.Parse.DateTime.Parser.parse(testDate, "{ISOdate}")
+		result
 	end
 
 	def getCurrentYear() do
